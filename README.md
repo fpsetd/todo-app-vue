@@ -7,10 +7,10 @@
 ## How to run?
 
 ``` sh
-> git clone https://github.com/fpsetd/todo-app-vue.git
-> cd todo-app-vue
-> npm install
-> npm run start
+git clone https://github.com/fpsetd/todo-app-vue.git
+cd todo-app-vue
+npm install
+npm run start
 ```
 
 > 装逼结束，告辞🙃️
