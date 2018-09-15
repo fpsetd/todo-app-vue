@@ -5,11 +5,11 @@
 		<ul class="todo-list">
 			<li :class="{completed: todo.completed, editing: todo.id === editingId}" v-for="todo in todosCopy">
 				<div class="view">
-					<input class="toggle" type="checkbox" v-model="todo.completed">
+					<input class="toggle" type="checkbox" v-model="todo.completed" @change="checked(todo.id)">
 					<label @dblclick="editing(todo.id)">{{todo.text}}</label>
 					<button class="destroy" @click="removeItem(todo.id)"></button>
 				</div>
-				<input class="edit" v-model="todo.text" v-focus="todo.id === editingId" @blur="editing(null)" @keyup.enter="editing(null)">
+				<input class="edit" v-model="todo.text" v-focus="todo.id === editingId" @keyup.enter="editing(null)">
 			</li>
 		</ul>
 	</section>
@@ -40,16 +40,19 @@
 					return this.$store.state.todos.every(item => item.completed);
 				},
 				set: function (value) {
-					this.$store.commit('checkAll', value);
+					this.$store.dispatch('checkAll', value);
 				}
 			}
 		},
 		methods: {
 			editing: function (id) {
-				this.editingId = id;
+				this.editingId = id || this.$store.dispatch('updateTodo', this.editingId);
+			},
+			checked: function (id) {
+				this.$store.dispatch('updateTodo', id);
 			},
 			removeItem: function (id) {
-				this.$store.commit('removeItem', id);
+				this.$store.dispatch('removeItem', id);
 			}
 		},
 		directives: {

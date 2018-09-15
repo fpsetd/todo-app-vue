@@ -12,7 +12,7 @@
 				<router-link active-class="selected" to="/completed">Completed</router-link>
 			</li>
 		</ul>
-		<button class="clear-completed" v-show="showClearAll" @click="clearComplete">Clear completed</button>
+		<button class="clear-completed" v-show="showClearAll" @click="clearCompleted">Clear completed</button>
 	</footer>
 </template>
 
@@ -22,8 +22,8 @@
 	export default {
 		computed: mapGetters(['todosCount', 'activeCount', 'showClearAll']),
 		methods: {
-			clearComplete: function () {
-				this.$store.commit('clearComplete');
+			clearCompleted: function () {
+				this.$store.dispatch('clearCompleted');
 			}
 		}
 	}

@@ -1,9 +1,10 @@
 {
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server --disable-host-check"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "todomvc-app-css": "^2.0.0",
     "todomvc-common": "^1.0.0",
     "vue": "^2.5.13",

@@ -15,11 +15,7 @@
 		methods: {
 			create: function () {
 				if (this.text) {
-					this.$store.commit('addTodo', {
-						id: this.$store.getters.todosCount,
-						text: this.text,
-						completed: false
-					});
+					this.$store.dispatch('addTodo', this.text);
 					this.text = '';
 				}
 			}
